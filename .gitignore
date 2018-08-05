@@ -2,4 +2,4 @@
 .rubocop.yml
 /.rubocop.yml
 /.python-version
-/.ipynb_checkpoints
+/python/.ipynb_checkpoints

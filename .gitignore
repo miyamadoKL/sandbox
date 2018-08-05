@@ -1,3 +1,5 @@
 .vscode/
 .rubocop.yml
 /.rubocop.yml
+/.python-version
+/.ipynb_checkpoints

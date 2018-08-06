@@ -1,0 +1,5 @@
+timezone: 'Asia/Tokyo'
+
++step1:
+  py>: tasks.hello.hello
+  name: "Digdag"

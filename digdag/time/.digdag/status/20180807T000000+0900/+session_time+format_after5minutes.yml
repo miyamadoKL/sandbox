@@ -1,0 +1,10 @@
+fullName: "+session_time+format_after5minutes"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams: {}
+  report:
+    inputs: []
+    outputs: []

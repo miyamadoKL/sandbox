@@ -1,0 +1,5 @@
+timezone: 'Asia/Tokyo'
+
++format_after5minutes:
+  py>: tasks.time.after5minutes
+  sessiontime: ${session_unixtime}

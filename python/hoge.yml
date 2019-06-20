@@ -1,0 +1,10 @@
+---
+nested_values:
+  postgresql:
+    piyo_db:
+      test_user: piyopiyo
+  mysql:
+    hogehoge_db:
+      test_user: foobar
+#     second_db:
+#      another_user: aiueo

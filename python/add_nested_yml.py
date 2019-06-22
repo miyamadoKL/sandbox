@@ -1,14 +1,27 @@
 import sys
 import yaml
 
+def vault_constructor(loader, node):
+    return loader.construct_scalar(node)
+
+
+def vault_representer(dumper, data):
+    if isinstance(data, str) and "ANSIBLE_VAULT" in data:
+        return dumper.represent_scalar(u'!vault', data, style='|')
+
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data)
+
+
 def read_from_file(file_name):
-  with open(file_name,"r") as f:
-    return yaml.load(f)
+    with open(file_name,"r") as f:
+      yaml.add_constructor(u'!vault', vault_constructor)
+      return yaml.load(f)
 
 
 def write_to_file(data):
-  with open(file_name,"w") as f:
-    f.write(yaml.dump(data, explicit_start=True, default_flow_style=False))
+    with open(file_name,"w") as f:
+      yaml.add_representer(str, vault_representer)
+      f.write(yaml.dump(data, explicit_start=True, default_flow_style=False))
 
 
 def nested(dict, list, answer, n=0):
@@ -41,5 +54,5 @@ hogeanswer = 'aiueo'
 nested(hogedict, hogelist, hogeanswer)
 
 merge_dict(data['nested_values'], hogedict, hogelist)
-
+# print(data)
 write_to_file(data)

@@ -1,4 +1,3 @@
-import sys
 import yaml
 
 def vault_constructor(loader, node):

@@ -24,7 +24,7 @@ def merge_dict(dict1, dict2, key_list, n=0):
         print('Can\'t merge dict2 to the same key nested less than dict1.')
         return
 
-    if dict1.has_key(key_list[n]) and n < len(key_list) - 1:
+    if key_list[n] in dict1 and n < len(key_list) - 1:
         merge_dict(dict1[key_list[n]], dict2[key_list[n]], key_list, n + 1)
     else:
         dict1.update(dict2)

@@ -24,10 +24,10 @@ def merge_dict(dict1, dict2, key_list, n=0):
         print('Can\'t merge dict2 to the same key nested less than dict1.')
         return
 
-    if not key_list[n] in dict1 or not isinstance(dict1[key_list[n]], dict):
-        dict1.update(dict2)
-    else:
+    if key_list[n] in dict1 and isinstance(dict1[key_list[n]], dict):
         merge_dict(dict1[key_list[n]], dict2[key_list[n]], key_list, n + 1)
+    else:
+        dict1.update(dict2)
         
 
 file_name = 'hoge.yml'

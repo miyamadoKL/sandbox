@@ -24,10 +24,10 @@ def merge_dict(dict1, dict2, key_list, n=0):
         print('Can\'t merge dict2 to the same key nested less than dict1.')
         return
 
-    if key_list[n] in dict1 and n < len(key_list) - 1:
-        merge_dict(dict1[key_list[n]], dict2[key_list[n]], key_list, n + 1)
-    else:
+    if not key_list[n] in dict1 or not isinstance(dict1[key_list[n]], dict):
         dict1.update(dict2)
+    else:
+        merge_dict(dict1[key_list[n]], dict2[key_list[n]], key_list, n + 1)
         
 
 file_name = 'hoge.yml'
@@ -40,6 +40,6 @@ hogeanswer = 'aiueo'
 
 nested(hogedict, hogelist, hogeanswer)
 
-merge_dict(data, hogedict, hogelist)
+merge_dict(data['nested_values'], hogedict, hogelist)
 
 write_to_file(data)

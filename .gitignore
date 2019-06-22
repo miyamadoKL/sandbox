@@ -3,3 +3,5 @@
 /.rubocop.yml
 /.python-version
 /python/.ipynb_checkpoints
+.DS_store
+sample-vue/

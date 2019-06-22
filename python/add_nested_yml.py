@@ -1,3 +1,4 @@
+import sys
 import yaml
 
 def read_from_file(file_name):
@@ -16,6 +17,17 @@ def nested(dict, list, answer, n=0):
         nested(dict[list[n]], list, answer, n + 1)
     else:
         dict[list[n]] = answer
+
+
+def merge_dict(dict1, dict2, key_list, n=0):
+    if len(key_list) <= n:
+        print('Can\'t merge dict2 to the same key nested less than dict1.')
+        return
+
+    if dict1.has_key(key_list[n]) and n < len(key_list) - 1:
+        merge_dict(dict1[key_list[n]], dict2[key_list[n]], key_list, n + 1)
+    else:
+        dict1.update(dict2)
         
 
 file_name = 'hoge.yml'
@@ -28,6 +40,6 @@ hogeanswer = 'aiueo'
 
 nested(hogedict, hogelist, hogeanswer)
 
-data['nested_values'][hogelist[0]].update(hogedict[hogelist[0]])
+merge_dict(data, hogedict, hogelist)
 
 write_to_file(data)
